@@ -92,27 +92,17 @@ def launch_image_generation_ui() -> None:
 
 def main() -> None:
     load_dotenv(Path(__file__).with_name(".env"))
-    actions = {
-        "1": ("Gemini Fibonacci example", gemini_fibonacci),
-        "2": ("Most-downloaded Hugging Face model by task", huggingface_model_downloads),
-        "3": ("Managed web-search agent", managed_web_search),
-        "4": ("Image-generation Gradio UI", launch_image_generation_ui),
-    }
+    print("\n=== Gemini Fibonacci example ===")
+    gemini_fibonacci()
 
-    while True:
-        print("\nChoose a practice:")
-        for number, (label, _) in actions.items():
-            print(f"{number}. {label}")
-        print("q. Quit")
+    print("\n=== Hugging Face model downloads example ===")
+    huggingface_model_downloads()
 
-        choice = input("> ").strip().lower()
-        if choice == "q":
-            return
-        action = actions.get(choice)
-        if action is None:
-            print("Choose 1, 2, 3, 4, or q.")
-            continue
-        action[1]()
+    print("\n=== Managed web-search example ===")
+    managed_web_search()
+
+    print("\n=== Image-generation UI ===")
+    launch_image_generation_ui()
 
 
 if __name__ == "__main__":
